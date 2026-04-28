@@ -5,7 +5,7 @@
 **바이브 코딩을 프로덕션급 코드로 끌어올리는 Claude Code 플러그인**  
 *A Claude Code plugin that elevates vibe-coded ideas to production-grade software*
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/sjh/vibe-pro-claude-plugin)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/shin0343/vibe-pro-claude-plugin)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-orange)](https://claude.ai/code)
 
@@ -41,7 +41,7 @@ Claude에게 "로그인 기능 만들어줘"라고 하면 코드가 나옵니다
 
 ```bash
 # Claude Code 세션에서
-/plugin marketplace add sjh/vibe-pro-claude-plugin
+/plugin marketplace add shin0343/vibe-pro-claude-plugin
 /plugin install vibe-pro
 ```
 
@@ -193,7 +193,7 @@ When you ask Claude to "build a login feature," you get code. But a senior engin
 
 ```bash
 # Inside a Claude Code session
-/plugin marketplace add sjh/vibe-pro-claude-plugin
+/plugin marketplace add shin0343/vibe-pro-claude-plugin
 /plugin install vibe-pro
 ```
 

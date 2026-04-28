@@ -1,0 +1,12 @@
+{
+  "name": "vibe-pro",
+  "description": "Elevates vibe-coded ideas to production-grade software. Applies 8 CS engineering principles (security, fault tolerance, clean architecture, DDD, complexity, resilience) automatically to every piece of code.",
+  "version": "1.0.0",
+  "author": {
+    "name": "sjh",
+    "email": "shin034316@gmail.com"
+  },
+  "homepage": "https://github.com/shin0343/vibe-pro-claude-plugin",
+  "repository": "https://github.com/shin0343/vibe-pro-claude-plugin",
+  "license": "MIT"
+}
