@@ -1,0 +1,17 @@
+{
+  "name": "vibe-pro-marketplace",
+  "owner": {
+    "name": "sjh",
+    "email": "shin034316@gmail.com"
+  },
+  "metadata": {
+    "description": "vibe-pro: A Claude Code plugin that elevates vibe-coded ideas to production-grade software"
+  },
+  "plugins": [
+    {
+      "name": "vibe-pro",
+      "source": ".",
+      "description": "Applies 8 CS engineering principles (security, fault tolerance, clean architecture, DDD, complexity, resilience) automatically to every piece of code."
+    }
+  ]
+}
