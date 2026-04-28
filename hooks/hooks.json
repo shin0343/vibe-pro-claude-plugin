@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'INPUT=$(cat); FILE_PATH=$(echo \"$INPUT\" | jq -r \".tool_input.file_path // empty\" 2>/dev/null); [ -z \"$FILE_PATH\" ] && exit 0; EXTENSION=$(echo \"$FILE_PATH\" | sed \"s/.*\\.//\" | tr \"[:upper:]\" \"[:lower:]\"); echo \"$EXTENSION\" | grep -qE \"^(js|jsx|ts|tsx|mjs|cjs|py|rb|go|java|cs|cpp|c|php|rs|swift|kt|scala|sh|bash|sql|vue|svelte)$\" || exit 0; FILENAME=$(basename \"$FILE_PATH\"); printf \"{\\\"systemMessage\\\": \\\"\\xF0\\x9F\\x93\\x8B vibe-pro: \\x60%s\\x60 written. Run \\x60/vibe-pro:review\\x60 for an 8-principle review or \\x60/vibe-pro:security\\x60 for an OWASP audit.\\\"}\\n\" \"$FILENAME\"'",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
