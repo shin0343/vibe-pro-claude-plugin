@@ -37,24 +37,47 @@ Claude에게 "로그인 기능 만들어줘"라고 하면 코드가 나옵니다
 
 ### 설치
 
-#### 방법 1 — GitHub 마켓플레이스 (권장)
+#### 방법 1 — CLI (세션 외부, 권장)
+
+터미널에서 바로 실행합니다. 마켓플레이스 등록과 설치를 한 번에 처리합니다.
 
 ```bash
-# Claude Code 세션에서
-/plugin marketplace add shin0343/vibe-pro-claude-plugin
-/plugin install vibe-pro
+# 마켓플레이스 등록
+claude plugin marketplace add shin0343/vibe-pro-claude-plugin
+
+# 플러그인 설치 (마켓플레이스 이름은 자동으로 owner-repo 형식으로 생성됨)
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin
 ```
 
-#### 방법 2 — 로컬 경로 (개발/테스트)
+`--scope` 옵션으로 적용 범위를 지정할 수 있습니다:
+
+```bash
+# 모든 프로젝트에 적용 (기본값)
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin --scope user
+
+# 현재 프로젝트 팀원 전체에 적용 (.claude/settings.json에 추가)
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin --scope project
+
+# 현재 저장소에서 나만 사용
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin --scope local
+```
+
+#### 방법 2 — Claude Code 세션 내부
+
+Claude Code 세션이 열려 있을 때 직접 입력합니다.
+
+```bash
+# Step 1: 마켓플레이스 등록
+/plugin marketplace add shin0343/vibe-pro-claude-plugin
+
+# Step 2: 플러그인 설치
+/plugin install vibe-pro@shin0343-vibe-pro-claude-plugin
+```
+
+#### 방법 3 — 로컬 경로 (개발/테스트)
 
 ```bash
 claude --plugin-dir /path/to/vibe-pro-claude-plugin
-```
-
-#### 방법 3 — 단일 세션 로드
-
-```bash
-claude --plugin-dir ./vibe-pro-claude-plugin
 ```
 
 ---
@@ -152,7 +175,8 @@ vibe-pro의 모든 스킬과 에이전트가 적용하는 핵심 CS 지식:
 ```
 vibe-pro-claude-plugin/
 ├── .claude-plugin/
-│   └── plugin.json              # 플러그인 매니페스트
+│   ├── plugin.json              # 플러그인 메타데이터
+│   └── marketplace.json         # 마켓플레이스 등록 정보
 ├── skills/
 │   ├── enhance/SKILL.md         # 핵심: 기능 설명 → 전문 스펙 프롬프트
 │   ├── review/SKILL.md          # 8가지 원칙 코드 리뷰
@@ -189,24 +213,47 @@ When you ask Claude to "build a login feature," you get code. But a senior engin
 
 ### Installation
 
-#### Option 1 — GitHub Marketplace (Recommended)
+#### Option 1 — CLI (Outside Session, Recommended)
+
+Run from your terminal. Registers the marketplace and installs in one flow.
 
 ```bash
-# Inside a Claude Code session
-/plugin marketplace add shin0343/vibe-pro-claude-plugin
-/plugin install vibe-pro
+# Register the marketplace
+claude plugin marketplace add shin0343/vibe-pro-claude-plugin
+
+# Install the plugin (marketplace name is auto-derived as owner-repo)
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin
 ```
 
-#### Option 2 — Local Path (Development / Testing)
+Use `--scope` to control who the plugin applies to:
+
+```bash
+# All your projects (default)
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin --scope user
+
+# All collaborators in the current project (adds to .claude/settings.json)
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin --scope project
+
+# Just you in this repository
+claude plugin install vibe-pro@shin0343-vibe-pro-claude-plugin --scope local
+```
+
+#### Option 2 — Inside a Claude Code Session
+
+Type directly in an open Claude Code session.
+
+```bash
+# Step 1: Register the marketplace
+/plugin marketplace add shin0343/vibe-pro-claude-plugin
+
+# Step 2: Install the plugin
+/plugin install vibe-pro@shin0343-vibe-pro-claude-plugin
+```
+
+#### Option 3 — Local Path (Development / Testing)
 
 ```bash
 claude --plugin-dir /path/to/vibe-pro-claude-plugin
-```
-
-#### Option 3 — Single-Session Load
-
-```bash
-claude --plugin-dir ./vibe-pro-claude-plugin
 ```
 
 ---
@@ -304,7 +351,8 @@ Whenever a code file (`.js`, `.ts`, `.py`, `.go`, etc.) is written or edited, th
 ```
 vibe-pro-claude-plugin/
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest
+│   ├── plugin.json              # Plugin metadata
+│   └── marketplace.json         # Marketplace registration
 ├── skills/
 │   ├── enhance/SKILL.md         # Core: idea → professional spec prompt
 │   ├── review/SKILL.md          # 8-principle code review
